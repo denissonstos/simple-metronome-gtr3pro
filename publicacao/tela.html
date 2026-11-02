@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- Reprodução da tela de page/index.js (480×480) para as capturas da loja; reduzida a 360×360. -->
+<style>
+  html, body { margin: 0; background: transparent; overflow: hidden; }
+  .tela { position: relative; width: 480px; height: 480px; border-radius: 50%; background: #000; overflow: hidden;
+          transform: scale(0.75); transform-origin: 0 0; font-family: 'Segoe UI', Roboto, Arial, sans-serif; color: #fff; }
+  .texto { position: absolute; left: 0; width: 480px; display: flex; align-items: center; justify-content: center; }
+  .andamento { top: 109px; height: 48px; font-size: 35px; color: #f5a623; }
+  .bpm { top: 163px; height: 112px; font-size: 106px; font-weight: 600; }
+  .rotulo { top: 272px; height: 30px; font-size: 22px; color: #888; }
+  .ajuste { position: absolute; top: 173px; width: 86px; height: 86px; border-radius: 43px; background: #222;
+            display: flex; align-items: center; justify-content: center; font-size: 54px; line-height: 1; padding-bottom: 6px; box-sizing: border-box; }
+  .tocar { position: absolute; left: 198px; top: 320px; width: 84px; height: 84px; border-radius: 42px; background: #2e7d32;
+           display: flex; align-items: center; justify-content: center; font-size: 36px; }
+  .tocando .tocar { background: #c62828; }
+  .anel { position: absolute; left: 10px; top: 10px; width: 448px; height: 448px; border-radius: 50%; border: 6px solid #f5a623; display: none; }
+  .tocando .anel { display: block; }
+</style>
+</head>
+<body>
+<div class="tela" id="tela">
+  <div class="anel"></div>
+  <div class="texto andamento" id="andamento"></div>
+  <div class="texto bpm" id="bpm"></div>
+  <div class="texto rotulo">BPM</div>
+  <div class="ajuste" style="left:35px">-</div>
+  <div class="ajuste" style="left:359px">+</div>
+  <div class="tocar" id="tocar">▶</div>
+</div>
+<script>
+  const p = new URLSearchParams(location.search)
+  const bpm = Number(p.get('bpm') || 120)
+  const nomes = [[40,'Grave'],[55,'Largo'],[72,'Adagio'],[107,'Andante'],[119,'Moderato'],[139,'Allegro'],[167,'Vivace'],[199,'Presto'],[250,'Prestissimo']]
+  document.getElementById('bpm').textContent = bpm
+  document.getElementById('andamento').textContent = nomes.find(([m]) => bpm <= m)[1]
+  if (p.get('tocando')) {
+    document.getElementById('tela').classList.add('tocando')
+    document.getElementById('tocar').textContent = '■'
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "configVersion": "v2",
+  "app": {
+    "appId": 1133097,
+    "appName": "Simple Metronome",
+    "appType": "app",
+    "version": {
+      "code": 2,
+      "name": "1.0.1"
+    },
+    "icon": "icon.png",
+    "vender": "denisson",
+    "description": "Metrônomo por vibração"
+  },
+  "permissions": [],
+  "runtime": {
+    "apiVersion": {
+      "compatible": "1.0.0",
+      "target": "1.0.1",
+      "minVersion": "1.0.0"
+    }
+  },
+  "targets": {
+    "gtr-3-pro": {
+      "module": {
+        "page": {
+          "pages": ["page/index"]
+        }
+      },
+      "platforms": [
+        { "name": "gtr3pro", "deviceSource": 229 },
+        { "name": "gtr3pro", "deviceSource": 230 },
+        { "name": "gtr3pro", "deviceSource": 242 },
+        { "name": "gtr3pro", "deviceSource": 6095106 }
+      ],
+      "designWidth": 480
+    }
+  },
+  "i18n": {
+    "pt-BR": { "appName": "Metronomo" },
+    "en-US": { "appName": "Simple Metronome" }
+  },
+  "defaultLanguage": "en-US"
+}
